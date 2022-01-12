@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   AppBar,
   Container,
@@ -12,11 +12,12 @@ import {
 import { makeStyles } from "@mui/styles";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import { Crypto } from "../../CryptoContext";
 
 const useStyle = makeStyles(() => ({
   title: {
     flex: 1,
-    color: "#4f55ff",
+    color: "#fff",
     fontFamily: "Inter !important",
     fontWeight: "700 !important",
     cursor: "pointer",
@@ -24,8 +25,9 @@ const useStyle = makeStyles(() => ({
 }));
 
 const Header = () => {
-  const styles = useStyle();
+  const { currency, setCurrency } = useContext(Crypto);
 
+  const styles = useStyle();
   const navigate = useNavigate();
 
   const darkTheme = createTheme({
@@ -37,13 +39,9 @@ const Header = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar
-          color="transparent"
-          position="static"
-          sx={{ backdropFilter: "blur(50px)" }}
-        >
+        <AppBar color="transparent" position="static">
           <Container>
-            <Toolbar>
+            <Toolbar sx={{ pt: 2, pb: 2 }}>
               <Typography
                 onClick={() => navigate("/")}
                 variant="h5"
@@ -54,17 +52,17 @@ const Header = () => {
               </Typography>
               <FormControl sx={{ m: 1, minWidth: 80 }}>
                 <Select
-                  defaultValue={"USD"}
+                  value={currency}
+                  onChange={(e) => setCurrency(e.target.value)}
                   variant="outlined"
                   inputProps={{ "aria-label": "without-label" }}
                   style={{
                     width: 100,
-                    marginRight: 15,
                     padding: 0,
                   }}
                 >
-                  <MenuItem value={"USD"}>USD</MenuItem>
-                  <MenuItem value={"ID"}>ID</MenuItem>
+                  <MenuItem value={"usd"}>USD</MenuItem>
+                  <MenuItem value={"idr"}>IDR</MenuItem>
                 </Select>
               </FormControl>
             </Toolbar>
