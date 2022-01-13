@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
     color: "white",
     minHeight: "100vh",
     width: "100%",
-    backgroundImage: "url(./banner.png)",
+    backgroundImage: "url(./banner2.png)",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
   },

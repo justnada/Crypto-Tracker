@@ -3,9 +3,9 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   scroll-behavior: smooth;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 a {
@@ -22,4 +22,5 @@ ul li {
 
 body {
   font-family: "Work Sans", sans-serif;
+  width: 100%;
 }

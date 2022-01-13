@@ -3,26 +3,26 @@ import { makeStyles } from "@mui/styles";
 import React from "react";
 import Carousel from "./carousel";
 
-const useStyles = makeStyles(() => ({
-  bannerContent: {
-    display: "flex !important",
-    flexDirection: "column",
-    overflow: "hidden",
-    minHeight: "100vh",
-  },
-  tagLine: {
-    display: "flex",
-    flexDirection: "column",
-    height: "50%",
-    justifyContent: "center",
-    textAlign: "center",
-    overflow: "hidden",
-    marginTop: "20px",
-  },
-}));
-
 const Banner = () => {
+  const useStyles = makeStyles(() => ({
+    bannerContent: {
+      display: "flex !important",
+      flexDirection: "column",
+      overflow: "hidden",
+    },
+    tagLine: {
+      display: "flex",
+      flexDirection: "column",
+      height: "50%",
+      justifyContent: "center",
+      textAlign: "center",
+      overflow: "hidden",
+      marginTop: "20px",
+    },
+  }));
+
   const styles = useStyles();
+
   return (
     <div>
       <Container className={styles.bannerContent}>
@@ -40,7 +40,7 @@ const Banner = () => {
               style={{
                 fontFamily: "inherit",
                 fontWeight: "inherit",
-                color: "#5cbbff",
+                color: "white",
               }}
             >
               Tracker
@@ -50,7 +50,6 @@ const Banner = () => {
             style={{
               textTransform: "capitalize",
               fontFamily: "Work Sans",
-              letterSpacing: 1,
               fontWeight: "lighter",
               lineHeight: 2,
               padding: "0 1rem",

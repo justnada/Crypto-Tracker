@@ -4,10 +4,10 @@ export const Crypto = createContext();
 
 const CryptoContext = ({ children }) => {
   const [currency, setCurrency] = useState("idr");
-  const [symbol, setSymbol] = useState("Rp");
+  const [symbol, setSymbol] = useState("Rp.");
 
   useEffect(() => {
-    if (currency === "idr") setSymbol("Rp");
+    if (currency === "idr") setSymbol("Rp.");
     else if (currency === "usd") setSymbol("$");
   }, [currency]);
 

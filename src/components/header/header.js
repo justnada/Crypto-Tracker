@@ -14,21 +14,21 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { Crypto } from "../../CryptoContext";
 
-const useStyle = makeStyles(() => ({
-  title: {
-    flex: 1,
-    color: "#fff",
-    fontFamily: "Inter !important",
-    fontWeight: "700 !important",
-    cursor: "pointer",
-  },
-}));
-
 const Header = () => {
   const { currency, setCurrency } = useContext(Crypto);
+  const navigate = useNavigate();
+
+  const useStyle = makeStyles(() => ({
+    title: {
+      flex: 1,
+      color: "#fff",
+      fontFamily: "Inter !important",
+      fontWeight: "700 !important",
+      cursor: "pointer",
+    },
+  }));
 
   const styles = useStyle();
-  const navigate = useNavigate();
 
   const darkTheme = createTheme({
     palette: {
@@ -50,7 +50,7 @@ const Header = () => {
               >
                 Crypto Tracker
               </Typography>
-              <FormControl sx={{ m: 1, minWidth: 80 }}>
+              <FormControl sx={{ m: 1 }}>
                 <Select
                   value={currency}
                   onChange={(e) => setCurrency(e.target.value)}

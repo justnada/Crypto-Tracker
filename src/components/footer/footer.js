@@ -2,8 +2,35 @@ import React from "react";
 import { AppBar, Container, Toolbar, Typography, Box } from "@mui/material";
 import { FiGithub } from "react-icons/fi";
 import { FaInstagram } from "react-icons/fa";
+import { makeStyles } from "@mui/styles";
 
 const Footer = () => {
+  const useStyles = makeStyles(() => ({
+    iconGroup: {
+      marginLeft: "auto",
+      display: "flex",
+      alignItems: "center",
+      flexDirection: "row",
+      cursor: "pointer",
+      overflow: "hidden",
+    },
+    icon: {
+      color: "white",
+      overflow: "inherit",
+      backgroundColor: "#a496ff26",
+      padding: "10px",
+      display: "flex",
+      transition: "all .2s ease-out",
+      borderRadius: ".5rem",
+      "&:hover": {
+        backgroundColor: "#302480",
+        borderRadius: "50%",
+      },
+    },
+  }));
+
+  const styles = useStyles();
+
   return (
     <Box>
       <AppBar position="static" color="transparent">
@@ -22,23 +49,15 @@ const Footer = () => {
                 textAlign: "center",
               }}
             >
-              © 2022 Nada Yumna
+              Nada Yumna &copy; 2022
             </Typography>
-            <div
-              style={{
-                marginLeft: "auto",
-                display: "flex",
-                alignItems: "center",
-                flexDirection: "row",
-                cursor: "pointer",
-                overflow: "hidden",
-              }}
-            >
+            <div className={styles.iconGroup}>
               <a
                 rel="noreferrer"
                 href="https://github.com/justnada"
                 target={"_blank"}
-                style={{ fontSize: 24, color: "white", overflow: "inherit" }}
+                style={{ fontSize: 23 }}
+                className={styles.icon}
               >
                 <FiGithub />
               </a>
@@ -48,10 +67,9 @@ const Footer = () => {
                 target={"_blank"}
                 style={{
                   fontSize: 25,
-                  color: "white",
                   marginLeft: 10,
-                  overflow: "inherit",
                 }}
+                className={styles.icon}
               >
                 <FaInstagram />
               </a>
