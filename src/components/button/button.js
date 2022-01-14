@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, withStyles } from "@mui/styles";
+import { withStyles } from "@mui/styles";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const Button = ({ children, selected, onClick }) => {

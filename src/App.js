@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { makeStyles } from "@mui/styles";
 
 import Header from "./components/header/header";
 import Home from "./pages/home";

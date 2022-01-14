@@ -3,7 +3,7 @@ import { Crypto } from "../../CryptoContext";
 import { HistoricalChart } from "../../config/api";
 import axios from "axios";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { makeStyles, withStyles } from "@mui/styles";
+import { withStyles } from "@mui/styles";
 import { Container, CircularProgress } from "@mui/material";
 import { Line } from "react-chartjs-2";
 import { chartDays } from "../../config/data";
@@ -12,7 +12,7 @@ import Button from "../button/button";
 const CoinInfo = ({ coin }) => {
   const [historicalData, setHistoricalData] = useState();
   const [days, setDays] = useState(1);
-  const { currency, symbol } = useContext(Crypto);
+  const { currency } = useContext(Crypto);
   const [flag, setFlag] = useState(false);
 
   const fetchHistoricalChart = async () => {
@@ -54,8 +54,6 @@ const CoinInfo = ({ coin }) => {
     },
   });
 
-  const useStyles = makeStyles(() => ({}));
-
   const MyContainer = (props) => {
     return (
       <Container className={props.classes.container}>
@@ -65,7 +63,6 @@ const CoinInfo = ({ coin }) => {
   };
 
   const StyledContainer = withStyles(responsiveStyles)(MyContainer);
-  const styles = useStyles();
   const theme = createTheme();
 
   // Chart Data
@@ -83,12 +80,12 @@ const CoinInfo = ({ coin }) => {
           date.getHours() > 12
             ? `${date.getHours() - 12}:${date.getMinutes()} PM`
             : `${date.getHours()}:${date.getMinutes()} AM`;
-        return days == 1 ? time : date.toLocaleDateString();
+        return days === 1 ? time : date.toLocaleDateString();
       }),
       datasets: [
         {
           data: historicalData.map((coin) => coin[1]),
-          label: `Price (Past ${days} Days) in ${currency}`,
+          label: `Price (Past ${days} Days) in ${currency.toUpperCase()}`,
           borderColor: "#9978ff",
           borderWidth: 3,
           fill: {
@@ -136,7 +133,7 @@ const CoinInfo = ({ coin }) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <StyledContainer>
-        {!historicalData | (flag == false) ? (
+        {!historicalData | (flag === false) ? (
           <CircularProgress size={100} thickness={1} />
         ) : (
           <>
