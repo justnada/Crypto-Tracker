@@ -5,6 +5,7 @@ import { TrendingCoins } from "../../config/api";
 import { Crypto } from "../../CryptoContext";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import { CircularProgress } from "@mui/material";
 
 export function moneyFormat(rawMoney) {
   return rawMoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -13,10 +14,13 @@ export function moneyFormat(rawMoney) {
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
   const { currency, symbol } = useContext(Crypto);
+  const [loading, setLoading] = useState(false);
 
   const fetchTrendingCoins = async () => {
+    setLoading(true);
     const { data } = await axios.get(TrendingCoins(currency));
     setTrending(data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -41,6 +45,23 @@ const Carousel = () => {
       color: "white",
       overflow: "hidden",
       justifyContent: "space-between",
+      padding: "1rem",
+      transition: "all .3s ease-out",
+      "&:hover": {
+        background: "#ffffff0d",
+        borderRadius: "2rem",
+      },
+    },
+    badge: {
+      fontSize: "12px",
+      textTransform: "capitalize",
+      position: "absolute",
+      background: "linear-gradient(90deg, #5946d3, #85377b, transparent)",
+      fontFamily: "Work Sans",
+      padding: "0.3rem 1.5rem 0.3rem .5rem",
+      borderRadius: "1rem 1rem 2.5rem 1rem",
+      marginLeft: " 5rem",
+      backdropFilter: "blur(2px)",
     },
   }));
 
@@ -52,9 +73,10 @@ const Carousel = () => {
       <div key={coin.id}>
         <Link
           className={styles.carouselItem}
-          to={`/coins/${coin.id}`}
+          to={`/coin/${coin.id}`}
           key={coin.name}
         >
+          <span className={styles.badge}>Trending</span>
           <img
             src={coin?.image}
             alt={coin.name}
@@ -131,17 +153,27 @@ const Carousel = () => {
 
   return (
     <div className={styles.carousel}>
-      <Slider
-        {...settings}
-        style={{
-          overflow: "hidden",
-          display: "flex",
-          justifyContent: "center",
-          margin: "3rem 0 1rem 0",
-        }}
-      >
-        {items}
-      </Slider>
+      {loading ? (
+        <CircularProgress
+          sx={{
+            width: "70px !important",
+            height: "70px !important",
+            marginTop: "2rem",
+          }}
+        />
+      ) : (
+        <Slider
+          {...settings}
+          style={{
+            overflow: "hidden",
+            display: "flex",
+            justifyContent: "center",
+            margin: "3rem 0 1rem 0",
+          }}
+        >
+          {items}
+        </Slider>
+      )}
     </div>
   );
 };

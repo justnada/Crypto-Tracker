@@ -41,6 +41,10 @@ const Banner = () => {
                 fontFamily: "inherit",
                 fontWeight: "inherit",
                 color: "white",
+                textDecoration: "underline",
+                textDecorationColor: "#6e5be9",
+                textDecorationThickness: 10,
+                textUnderlineOffset: "5%",
               }}
             >
               Tracker

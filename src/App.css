@@ -8,8 +8,22 @@
   overflow-x: hidden;
 }
 
+body {
+  font-family: "Work Sans", sans-serif;
+  width: 100%;
+  background-image: url("../public/banner2.png") !important;
+  background-color: #000918;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  min-height: 100vh;
+  width: 100%;
+}
+
 a {
   text-decoration: none;
+  color: #976cff;
+  cursor: pointer;
 }
 
 ul {
@@ -18,9 +32,4 @@ ul {
 
 ul li {
   list-style: none;
-}
-
-body {
-  font-family: "Work Sans", sans-serif;
-  width: 100%;
 }

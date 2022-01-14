@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { CoinList } from "../config/api";
+import { CoinList } from "../../config/api";
 import axios from "axios";
-import { Crypto } from "../CryptoContext";
+import { Crypto } from "../../CryptoContext";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import {
   Container,
@@ -16,11 +16,10 @@ import {
   TableRow,
   LinearProgress,
   Pagination,
-  TablePagination,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useNavigate } from "react-router-dom";
-import { moneyFormat } from "./banner/carousel";
+import { moneyFormat } from "../banner/carousel";
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -56,7 +55,7 @@ const useStyles = makeStyles(() => ({
   tableContainer: {
     margin: "2rem 0",
     backgroundColor: "#ffffff0f",
-    borderRadius: ".7rem",
+    borderRadius: "1.5rem",
   },
   table: {
     minWidth: 650,
@@ -85,6 +84,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     alignItems: "flex-start",
     textTransform: "uppercase",
+    fontWeight: "bold",
   },
   row: {
     transition: "background-color .2s ease-out",
@@ -135,7 +135,18 @@ const CoinsTable = () => {
       <Box>
         <Container className={styles.container}>
           <Typography variant="h4" className={styles.headline}>
-            Cryptocurrency Prices by Market Cap
+            Cryptocurrency Prices by{" "}
+            <span
+              style={{
+                textDecoration: "underline",
+                textDecorationColor: "#6e5be9",
+                textUnderlineOffset: "10%",
+                textDecorationThickness: 4,
+              }}
+            >
+              {" "}
+              Market Cap
+            </span>
           </Typography>
           <TextField
             className={styles.searchBox}
@@ -156,7 +167,11 @@ const CoinsTable = () => {
                   <TableRow>
                     {["Coin", "Price", "24h Change", "Market Cap"].map(
                       (head) => (
-                        <TableCell align="center" className={styles.theadCell}>
+                        <TableCell
+                          key={head}
+                          align="center"
+                          className={styles.theadCell}
+                        >
                           {head}
                         </TableCell>
                       )
@@ -173,7 +188,7 @@ const CoinsTable = () => {
                         <TableRow
                           className={styles.row}
                           key={row.name}
-                          onClick={() => navigate(`/coins/${row.id}`)}
+                          onClick={() => navigate(`/coin/${row.id}`)}
                         >
                           <TableCell
                             align="center"
@@ -192,6 +207,8 @@ const CoinsTable = () => {
                                   style={{
                                     textTransform: "capitalize",
                                     textAlign: "left",
+                                    fontWeight: 400,
+                                    fontSize: 14.5,
                                   }}
                                 >
                                   {row.name}
@@ -246,7 +263,7 @@ const CoinsTable = () => {
             )}
           </TableContainer>
           <Pagination
-            count={(handleSearch()?.length / 10).toFixed(0)}
+            count={(handleSearch().length / 10).toFixed(0)}
             sx={{ display: "flex", justifyContent: "flex-end" }}
             onChange={(_, value) => {
               setPage(value);

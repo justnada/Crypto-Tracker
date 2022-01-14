@@ -49,7 +49,16 @@ const Footer = () => {
                 textAlign: "center",
               }}
             >
-              Nada Yumna &copy; 2022
+              <span
+                style={{
+                  textDecoration: "underline",
+                  textDecorationColor: "#6e5be9",
+                  textUnderlineOffset: "10%",
+                }}
+              >
+                Nada Yumna
+              </span>{" "}
+              &copy; 2022
             </Typography>
             <div className={styles.iconGroup}>
               <a

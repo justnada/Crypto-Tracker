@@ -48,7 +48,7 @@ const Header = () => {
                 component="div"
                 className={styles.title}
               >
-                Crypto Tracker
+                Crypto<span style={{ color: "#7668e9" }}>Tracker</span>
               </Typography>
               <FormControl sx={{ m: 1 }}>
                 <Select

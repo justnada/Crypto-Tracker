@@ -7,23 +7,10 @@ import Coin from "./pages/coin";
 import "./App.css";
 import Footer from "./components/footer/footer";
 
-const useStyles = makeStyles(() => ({
-  root: {
-    backgroundColor: "#000918",
-    color: "white",
-    minHeight: "100vh",
-    width: "100%",
-    backgroundImage: "url(./banner2.png)",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-  },
-}));
-
 function App() {
-  const classes = useStyles();
   return (
     <BrowserRouter>
-      <div className={classes.root}>
+      <div>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
