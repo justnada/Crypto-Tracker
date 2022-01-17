@@ -1,5 +1,5 @@
 ## Crypto Tracker
-**Crypto Tracker** is a crypto currency tracker app building with react js. Access it in https://cryptotrackerr.vercel.app/
+**Crypto Tracker** is a crypto currency tracker app building with react js. Access it in <a href="https://cryptotrackerr.vercel.app/" target="_blank">here</a>
 
 #### Services
 1. Change the currency (available currency is USD and IDR)
